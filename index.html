@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="styles/first_page.css">
+	<title>Дубровских Никита Евгеньевич 221-361 лаб3</title>
+</head>
+
+<body>
+	<header class="header">
+		<nav>
+			<ul>
+				<li><a class="active-page" href="index.html">Страница 1</a></li>
+				<li><a href="second_page.html">Страница 2</a></li>
+				<li><a href="third_page.html">Страница 3</a></li>
+			</ul>
+		</nav>
+	</header>
+	<div class="container">
+		<h1>Marks in Neovim</h1>
+		<p>A <b>mark</b> allows you to record your current position so you can return to it later. There is no visible
+			indication of where marks are set.
+		</p>
+		<p>Each file has a set of marks identified by lowercase letters (a-z). In addition there is a global set of
+			marks
+			identified by uppercase letters (A-Z) that identify a position within a particular file. For example, you
+			may be
+			editing ten files. Each file could have mark <b>a</b>, but only one file can have mark <b>A</b>.
+		</p>
+		<p>Because of their limitations, uppercase marks may at first glance seem less versatile than their lowercase
+			counterpart, but this feature allows them to be used as a quick sort of "file bookmark." For example, open
+			your
+			.vimrc, press <code>mV</code>, and close Vim.
+			The
+			next time you want to edit your .vimrc, just press <code>'V</code> to open it. This assumes that you have
+			kept
+			the default 'viminfo' behavior, so that
+			uppercase marks are all remembered in the <a target="_blank" rel="nofollow noreferrer noopener"
+				class="external text"
+				href="http://vimdoc.sourceforge.net/cgi-bin/help?tag=viminfo-file">viminfo-file</a>
+			between Vim sessions.
+		</p>
+		<p>As well as the letter marks, there are various special marks.
+		</p>
+		<p>The marks for recently-edited files are saved (provided the <code>'viminfo'</code> option has the
+			<b><code>'</code></b> parameter), so marks from previous sessions can be used when editing in the future. <a
+				target="_blank" rel="nofollow noreferrer noopener" class="external text"
+				href="http://vimdoc.sourceforge.net/cgi-bin/help?tag=%27viminfo%27">:help&nbsp;'viminfo'</a>
+		</p>
+		<div id="toc" class="toc" role="navigation" aria-labelledby="mw-toc-heading"><input type="checkbox"
+				role="button" id="toctogglecheckbox" class="toctogglecheckbox" style="display:none" aria-label="show">
+			<div class="toctitle" lang="en" dir="ltr" style="min-width: 169px;">
+				<h2 id="mw-toc-heading"><svg class="wds-icon wds-icon-tiny">
+						<use href="#wds-icons-bullet-list-tiny"></use>
+					</svg>Contents</h2><span class="toctogglespan"><label class="toctogglelabel" for="toctogglecheckbox"
+						aria-label="show"></label></span>
+			</div>
+			<ul>
+				<li class="toclevel-1 tocsection-1"></li>
+				<li class="toclevel-1 tocsection-2"></li>
+				<li class="toclevel-1 tocsection-3"></li>
+				<li class="toclevel-1 tocsection-4"></li>
+				<li class="toclevel-1 tocsection-5"></li>
+				<li class="toclevel-1 tocsection-6"></li>
+				<li class="toclevel-1 tocsection-7"></li>
+			</ul>
+		</div>
+
+		<div id="incontent_player" class="gpt-ad hidead"></div>
+		<h2><span class="mw-headline" id="Setting_marks">Setting marks</span><span class="mw-editsection"><span
+					class="mw-editsection-bracket">[</span><a href="/wiki/Using_marks?veaction=edit&amp;section=1"
+					class="mw-editsection-visualeditor" title="Edit section: Setting marks"
+					data-tracking-label="edit-section-anon"><svg class="wds-icon wds-icon-tiny">
+						<use xlink:href="#wds-icons-pencil-tiny"></use>
+					</svg></a><span class="mw-editsection-bracket">]</span></span></h2>
+		<p>To set a mark, type <code>m</code> followed by a letter. For example, <code>ma</code> sets mark <b>a</b> at
+			the
+			current position (line and column). If you set mark <b>a</b>, any mark in the current file that was
+			previously
+			identified as <b>a</b> is removed. If you set mark <b>A</b>, any previous mark <b>A</b> (in any file) is
+			removed.
+		</p>
+		<div class="ad-slot-placeholder incontent-leaderboard is-loading">
+			<div id="incontent_leaderboard" class="gpt-ad hidead ad-slot ad-slot-icl"></div>
+			<div class="ae-translatable-label" data-slot-name="incontent_leaderboard">Advertisement</div>
+		</div>
+		<h2><span class="mw-headline" id="Using_marks">Using marks</span><span class="mw-editsection"><span
+					class="mw-editsection-bracket">[</span><a href="/wiki/Using_marks?veaction=edit&amp;section=2"
+					class="mw-editsection-visualeditor" title="Edit section: Using marks"
+					data-tracking-label="edit-section-anon"><svg class="wds-icon wds-icon-tiny">
+						<use xlink:href="#wds-icons-pencil-tiny"></use>
+					</svg></a><span class="mw-editsection-bracket">]</span></span></h2>
+		<p>To jump to a mark enter an apostrophe (<code>'</code>) or backtick (<code>`</code>) followed by a letter.
+			Using
+			an apostrophe jumps to the beginning of the line holding the mark, while a backtick jumps to the line and
+			column
+			of the mark.
+		</p>
+		<p>Using a lowercase letter (for example <code>`a</code>) will only work if that mark exists in the current
+			buffer.
+			Using an uppercase letter (for example <code>`A</code>) will jump to the file and the position holding the
+			mark
+			(you do not need to open the file prior to jumping to the mark).
+		</p>
+		<ul>
+			<li>Each file can have mark <b>a</b> – use a lowercase mark to jump within a file.</li>
+			<li>There is only one file mark <b>A</b> – use an uppercase mark to jump between files.</li>
+		</ul>
+		<table class="wikitable">
+			<tbody>
+				<tr>
+					<th>Command</th>
+					<th>Description
+					</th>
+				</tr>
+				<tr>
+					<td><code>ma</code></td>
+					<td>set mark <b>a</b> at current cursor location
+					</td>
+				</tr>
+				<tr>
+					<td><code>'a</code></td>
+					<td>jump to line of mark <b>a</b> (first non-blank character in line)
+					</td>
+				</tr>
+				<tr>
+					<td><code>`a</code></td>
+					<td>jump to position (line and column) of mark <b>a</b>
+					</td>
+				</tr>
+				<tr>
+					<td><code>d'a</code></td>
+					<td>delete from current line to line of mark <b>a</b>
+					</td>
+				</tr>
+				<tr>
+					<td><code>d`a</code></td>
+					<td>delete from current cursor position to position of mark <b>a</b>
+					</td>
+				</tr>
+				<tr>
+					<td><code>c'a</code></td>
+					<td>change text from current line to line of mark <b>a</b>
+					</td>
+				</tr>
+				<tr>
+					<td><code>y`a</code></td>
+					<td>yank text to unnamed buffer from cursor to position of mark <b>a</b>
+					</td>
+				</tr>
+				<tr>
+					<td><code>:marks</code></td>
+					<td>list all the current marks
+					</td>
+				</tr>
+				<tr>
+					<td><code>:marks aB</code></td>
+					<td>list marks <b>a</b>, <b>B</b>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<p>Commands like <code>d'a</code> operate "linewise" and include the start and end lines.<br>
+			Commands like <code>d`a</code> operate "characterwise" and include the start but not the end character.
+		</p>
+		<p>It is possible to navigate between lowercase marks:
+		</p>
+		<table class="wikitable">
+			<tbody>
+				<tr>
+					<th>Command</th>
+					<th>Description
+					</th>
+				</tr>
+				<tr>
+					<td><code>]'</code></td>
+					<td>jump to next line with a lowercase mark
+					</td>
+				</tr>
+				<tr>
+					<td><code>['</code></td>
+					<td>jump to previous line with a lowercase mark
+					</td>
+				</tr>
+				<tr>
+					<td><code>]`</code></td>
+					<td>jump to next lowercase mark
+					</td>
+				</tr>
+				<tr>
+					<td><code>[`</code></td>
+					<td>jump to previous lowercase mark
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<p>The above commands take a count. For example, <code>5]`</code> jumps to the fifth mark after the cursor.
+		</p>
+		<h2><span class="mw-headline" id="Special_marks">Special marks</span><span class="mw-editsection"><span
+					class="mw-editsection-bracket">[</span><a href="/wiki/Using_marks?veaction=edit&amp;section=3"
+					class="mw-editsection-visualeditor" title="Edit section: Special marks"
+					data-tracking-label="edit-section-anon"><svg class="wds-icon wds-icon-tiny">
+						<use xlink:href="#wds-icons-pencil-tiny"></use>
+					</svg></a><span class="mw-editsection-bracket">]</span></span></h2>
+		<p>Vim has some special marks which it sets automatically. Here are some of the most useful:
+		</p>
+		<table class="wikitable">
+			<tbody>
+				<tr>
+					<th>Command</th>
+					<th>Description
+					</th>
+				</tr>
+				<tr>
+					<td><code>`.</code></td>
+					<td>jump to position where last change occurred in current buffer
+					</td>
+				</tr>
+				<tr>
+					<td><code>`"</code></td>
+					<td>jump to position where last exited current buffer
+					</td>
+				</tr>
+				<tr>
+					<td><code>`0</code></td>
+					<td>jump to position in last file edited (when exited Vim)
+					</td>
+				</tr>
+				<tr>
+					<td><code>`1</code></td>
+					<td>like <code>`0</code> but the previous file (also <code>`2</code> etc)
+					</td>
+				</tr>
+				<tr>
+					<td><code>''</code></td>
+					<td>jump back (to line in current buffer where jumped from)
+					</td>
+				</tr>
+				<tr>
+					<td><code>``</code></td>
+					<td>jump back (to position in current buffer where jumped from)
+					</td>
+				</tr>
+				<tr>
+					<td><code>`[</code> or <code>`]</code></td>
+					<td>jump to beginning/end of previously changed or yanked text
+					</td>
+				</tr>
+
+				<tr>
+					<td><code>`&lt;</code> or <code>`&gt;</code></td>
+					<td>jump to beginning/end of last visual selection
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<p>See the full list at :help&nbsp;'[ and following.
+		</p>
+		<h2><span class="mw-headline" id="Deleting_marks">Deleting marks</span><span class="mw-editsection"><span
+					class="mw-editsection-bracket">[</span><a href="/wiki/Using_marks?veaction=edit&amp;section=4"
+					class="mw-editsection-visualeditor" title="Edit section: Deleting marks"
+					data-tracking-label="edit-section-anon"><svg class="wds-icon wds-icon-tiny">
+						<use xlink:href="#wds-icons-pencil-tiny"></use>
+					</svg></a><span class="mw-editsection-bracket">]</span></span></h2>
+		<p>If you delete a line containing a mark, the mark is also deleted.
+		</p>
+		<p>If you wipeout a buffer (command <code>:bw</code>), all marks for the buffer are deleted.
+		</p>
+		<p>The <code>:delmarks</code> command (abbreviated as <code>:delm</code>) may be used to delete specified marks.
+		</p>
+		<table class="wikitable">
+			<tbody>
+				<tr>
+					<th>Command</th>
+					<th>Description
+					</th>
+				</tr>
+				<tr>
+					<td><code>:delmarks a</code></td>
+					<td>delete mark <b>a</b>
+					</td>
+				</tr>
+				<tr>
+					<td><code>:delmarks a-d</code></td>
+					<td>delete marks <b>a</b>, <b>b</b>, <b>c</b>, <b>d</b>
+					</td>
+				</tr>
+				<tr>
+					<td><code>:delmarks abxy</code></td>
+					<td>delete marks <b>a</b>, <b>b</b>, <b>x</b>, <b>y</b>
+					</td>
+				</tr>
+				<tr>
+					<td><code>:delmarks aA</code></td>
+					<td>delete marks <b>a</b>, <b>A</b>
+					</td>
+				</tr>
+				<tr>
+					<td><code>:delmarks!</code></td>
+					<td>delete all lowercase marks for the current buffer (a-z)
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<h2><span class="mw-headline" id="See_also">See also</span><span class="mw-editsection"><span
+					class="mw-editsection-bracket">[</span><a href="/wiki/Using_marks?veaction=edit&amp;section=5"
+					class="mw-editsection-visualeditor" title="Edit section: See also"
+					data-tracking-label="edit-section-anon"><svg class="wds-icon wds-icon-tiny">
+						<use xlink:href="#wds-icons-pencil-tiny"></use>
+					</svg></a><span class="mw-editsection-bracket">]</span></span></h2>
+		<ul>
+			<li>showmarks plugin to put a sign in
+				the
+				left margin for each mark; works poorly and interferes with other commands in Vim 7 (updated version
+				working
+				in 7.4 here: [1])</li>
+			<li>script#2142 is another showmarks
+				plugin
+				which works without problems in Vim 7</li>
+			<li>MarkX Another plugin for displaying
+				marks in the margin</li>
+			<li>Signature is another plugin for displaying marks
+				in
+				the margin, as well as special markers, with some added functionality like new mappings.</li>
+		</ul>
+		<h2><span class="mw-headline" id="References">References</span><span class="mw-editsection"><span
+					class="mw-editsection-bracket">[</span><a href="/wiki/Using_marks?veaction=edit&amp;section=6"
+					class="mw-editsection-visualeditor" title="Edit section: References"
+					data-tracking-label="edit-section-anon"><svg class="wds-icon wds-icon-tiny">
+						<use xlink:href="#wds-icons-pencil-tiny"></use>
+					</svg></a><span class="mw-editsection-bracket">]</span></span></h2>
+		<ul>
+			<li>:help&nbsp;mark-motions</li>
+		</ul>
+		<h2><span class="mw-headline" id="Comments">Comments</span><span class="mw-editsection"><span
+					class="mw-editsection-bracket">[</span><a href="/wiki/Using_marks?veaction=edit&amp;section=7"
+					class="mw-editsection-visualeditor" title="Edit section: Comments"
+					data-tracking-label="edit-section-anon"><svg class="wds-icon wds-icon-tiny">
+						<use xlink:href="#wds-icons-pencil-tiny"></use>
+					</svg></a><span class="mw-editsection-bracket">]</span></span></h2>
+		<p>The <code>:delmarks</code> command requires Vim 7.0. On previous versions, a kludge to remove all marks is to
+			enter the command <code>:%!cat</code> (on Unix-based systems), or <code>:%!type</code> (on Windows) to
+			delete
+			the entire contents of the buffer and replace each line with itself by filtering through an external
+			command. A
+			mark is automatically deleted when its line is deleted.
+		</p>
+		<hr>
+		<p>I suggest moving the <b>Deleting</b> section below the <b>Using</b> section. (Spiiph 11:53, 30 July 2009 (UTC))
+		</p>
+		<dl>
+			<dd>I was scratching my head wondering why I put them in their current order, but when I went to move it, I
+				see
+				why. It's nice that "Using" and "Special" can be seen together, on the same screen because they are the
+				items that a reader will probably want to refer to (it's a bit hard to keep all of it in your mind). I
+				suppose "Deleting" could go after "Special", but that might be as strange as where it is now? JohnBeckett 23:34, 30 July 2009 (UTC)
+				<dl>
+					<dd>I think that would be better, even though it might seem illogical. Another idea would be to
+						remove
+						the section on <b>Deleting marks</b> altogether. I don't think I have ever used that
+						functionality,
+						and users who need it are probably advanced enough to find the information in the
+						<code>:help</code>. (Spiiph 13:39, 2 August
+						2009
+						(UTC))
+						<dl>
+							<dd>Done.</dd>
+						</dl>
+					</dd>
+				</dl>
+			</dd>
+		</dl>
+	</div>
+	<footer class="footer">
+		<nav>
+			<ul>
+				<li>Номер: +79254333214</li>
+				<li>Почта: testname142@gmail.com</li>
+			</ul>
+		</nav>
+	</footer>
+</body>
