@@ -1,0 +1,18 @@
+footer {
+	height: 10vh;
+	background-color: #333333;
+	display: flex;
+	align-items: center;
+	padding-left: 10vh;
+	color: white;
+}
+
+footer ul {
+	list-style-type: none;
+}
+
+footer li {
+	float: left;
+	margin-right: 10vh;
+	padding-left: 5vh;
+}
